@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greg & Ruth's Wedding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .hamburger {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+            border: 1px solid #e0e0e0;
+        }
+
+        .hamburger:hover {
+            box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+            border-color: #1a1a1a;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: #1a1a1a;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: #ffffff;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: right 0.3s ease;
+            padding: 100px 40px 40px;
+            border-left: 1px solid #e0e0e0;
+        }
+
+        .menu-overlay.active {
+            right: 0;
+        }
+
+        .menu-overlay nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .menu-overlay a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: all 0.3s;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .menu-overlay a:hover {
+            background: #1a1a1a;
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .menu-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.6);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .menu-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px;
+            scroll-snap-align: start;
+            position: relative;
+        }
+
+        /* Decorative elements */
+        .floral-accent {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .hero {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '✦';
+            position: absolute;
+            top: 10%;
+            left: 15%;
+            font-size: 2rem;
+            color: white;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '✦';
+            position: absolute;
+            bottom: 15%;
+            right: 15%;
+            font-size: 2rem;
+            color: white;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-delay-1 { animation-delay: 0.2s; }
+        .animate-delay-2 { animation-delay: 0.4s; }
+        .animate-delay-3 { animation-delay: 0.6s; }
+        .animate-delay-4 { animation-delay: 0.8s; }
+
+        /* Geometric Patterns */
+        .geometric-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, #1a1a1a 35px, #1a1a1a 36px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, #1a1a1a 35px, #1a1a1a 36px);
+        }
+
+        .geometric-pattern-light {
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, #000 35px, #000 36px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, #000 35px, #000 36px);
+        }
+
+        .diagonal-lines {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            opacity: 0.02;
+            pointer-events: none;
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                #1a1a1a 20px,
+                #1a1a1a 21px
+            );
+            animation: rotate 60s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 1px;
+            background: white;
+            margin: 2rem auto;
+            animation: scaleIn 0.8s ease 0.5s backwards;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: white;
+        }
+
+        .hero .names {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .hero .first-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: white;
+        }
+
+        .hero .last-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #cccccc;
+            display: block;
+            margin-top: -10px;
+        }
+
+        .hero .ampersand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 6rem;
+            font-style: italic;
+            color: white;
+            font-weight: 300;
+        }
+
+        .hero .tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #cccccc;
+            margin-top: 2rem;
+        }
+
+        .date-section {
+            background: #ffffff;
+            position: relative;
+        }
+
+        .date-section::before {
+            content: '❀';
+            position: absolute;
+            top: 15%;
+            right: 10%;
+            font-size: 4rem;
+            color: #1a1a1a;
+            opacity: 0.05;
+        }
+
+        .date-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .wedding-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .countdown-section {
+            background: #f8f8f8;
+        }
+
+        .countdown-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            color: #1a1a1a;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 50px;
+        }
+
+        .countdown-item {
+            text-align: center;
+            background: white;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            min-width: 140px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .countdown-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            display: block;
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        .form-section {
+            background: #ffffff;
+            width: 100%;
+        }
+
+        .form-container {
+            max-width: 650px;
+            width: 100%;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .form-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            text-align: center;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .form-section p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: #333;
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s;
+            background: #fafafa;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #1a1a1a;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.1);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 18px;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+            background: #000000;
+        }
+
+        .success-message {
+            background: #f0f0f0;
+            color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            display: none;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            font-weight: 300;
+        }
+
+        .rsvp-section {
+            background: #f8f8f8;
+            width: 100%;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .radio-option {
+            flex: 1;
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .radio-option label {
+            display: block;
+            padding: 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .radio-option input[type="radio"]:checked + label {
+            border-color: #1a1a1a;
+            background: #1a1a1a;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .form-divider {
+            width: 100%;
+            height: 1px;
+            background: #e0e0e0;
+            margin: 2.5rem 0;
+        }
+
+        /* Venue Section */
+        .venue-section {
+            background: #ffffff;
+            width: 100%;
+        }
+
+        .venue-content {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .venue-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .venue-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .venue-address {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .map-container {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Guest List Selector */
+        .guest-selector {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .guest-search {
+            width: 100%;
+            padding: 15px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            background: #fafafa;
+        }
+
+        .guest-search:focus {
+            outline: none;
+            border-color: #1a1a1a;
+            background: white;
+        }
+
+        .guest-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+            max-height: 250px;
+            overflow-y: auto;
+            display: none;
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .guest-dropdown.active {
+            display: block;
+        }
+
+        .guest-option {
+            padding: 12px 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .guest-option:hover {
+            background: #f5f5f5;
+        }
+
+        .guest-option.selected {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .selected-guest {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            background: #1a1a1a;
+            color: white;
+            border-radius: 20px;
+            margin: 10px 10px 0 0;
+            font-size: 0.9rem;
+        }
+
+        .remove-guest {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .selected-guests-container {
+            margin-top: 15px;
+            min-height: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                top: 20px;
+                right: 20px;
+            }
+
+            .hamburger {
+                width: 45px;
+                height: 45px;
+            }
+
+            .menu-overlay {
+                max-width: 100%;
+                padding: 80px 30px 30px;
+            }
+
+            .menu-overlay a {
+                font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 60px 20px;
+                min-height: auto;
+            }
+
+            .hero {
+                min-height: 100vh;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero .first-name {
+                font-size: 2.5rem;
+            }
+            
+            .hero .ampersand {
+                font-size: 3.5rem;
+            }
+
+            .hero .last-name {
+                font-size: 1rem;
+            }
+
+            .hero .tagline {
+                font-size: 0.9rem;
+                letter-spacing: 2px;
+            }
+
+            .date-section h2,
+            .countdown-section h2,
+            .form-section h2,
+            .venue-section h2 {
+                font-size: 2rem;
+            }
+
+            .wedding-date {
+                font-size: 2rem;
+            }
+
+            .venue-name {
+                font-size: 1.5rem;
+            }
+
+            .venue-address {
+                font-size: 1rem;
+            }
+
+            .countdown {
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .countdown-item {
+                padding: 20px 25px;
+                min-width: 120px;
+            }
+
+            .countdown-value {
+                font-size: 3rem;
+            }
+
+            .countdown-label {
+                font-size: 0.75rem;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .form-section h2 {
+                font-size: 2rem;
+            }
+
+            .form-section p {
+                font-size: 0.9rem;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero .first-name {
+                font-size: 2rem;
+            }
+
+            .hero .ampersand {
+                font-size: 2.5rem;
+            }
+
+            .hero .last-name {
+                font-size: 0.85rem;
+                letter-spacing: 2px;
+            }
+
+            .hero .tagline {
+                font-size: 0.8rem;
+                letter-spacing: 2px;
+            }
+
+            .date-section h2,
+            .countdown-section h2,
+            .form-section h2,
+            .venue-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .wedding-date {
+                font-size: 1.75rem;
+            }
+
+            .venue-name {
+                font-size: 1.3rem;
+            }
+
+            .countdown {
+                gap: 8px;
+            }
+
+            .countdown-item {
+                padding: 15px 20px;
+                min-width: 100px;
+            }
+
+            .countdown-value {
+                font-size: 2.5rem;
+            }
+
+            .countdown-label {
+                font-size: 0.7rem;
+                letter-spacing: 1px;
+            }
+
+            .form-container {
+                padding: 25px 15px;
+            }
+
+            .btn {
+                padding: 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <div class="nav-menu">
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+    
+    <div class="menu-overlay" id="menuOverlay">
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#date">Wedding Date</a>
+            <a href="#countdown">Countdown</a>
+            <a href="#venue">Venue</a>
+            <a href="#day-guests">Day Guest RSVP</a>
+            <a href="#night-guests">Evening RSVP</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="section hero" id="home">
+        <div class="geometric-pattern"></div>
+        <div class="hero-content">
+            <div class="names">
+                <div class="animate-on-scroll">
+                    <div class="first-name">Greg</div>
+                    <div class="last-name">Lawson</div>
+                </div>
+                <span class="ampersand animate-on-scroll animate-delay-1">&</span>
+                <div class="animate-on-scroll animate-delay-2">
+                    <div class="first-name">Ruth</div>
+                    <div class="last-name">Dean</div>
+                </div>
+            </div>
+            <div class="hero-divider"></div>
+            <p class="tagline animate-on-scroll animate-delay-3">are getting married</p>
+        </div>
+    </section>
+
+    <!-- Date Section -->
+    <section class="section date-section" id="date">
+        <div class="geometric-pattern geometric-pattern-light"></div>
+        <div>
+            <h2>Save the Date</h2>
+            <div class="wedding-date">27th March 2027</div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="section countdown-section" id="countdown">
+        <div class="diagonal-lines"></div>
+        <div>
+            <h2>Countdown to Our Big Day</h2>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="days">0</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="hours">0</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="minutes">0</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="seconds">0</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venue Section -->
+    <section class="section venue-section" id="venue">
+        <div class="geometric-pattern geometric-pattern-light"></div>
+        <div class="venue-content">
+            <h2>The Venue</h2>
+            <div class="venue-name">Ribby Hall Village</div>
+            <div class="venue-address">Wrea Green, Preston PR4 2PR</div>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2352.9999999999995!2d-2.8847!3d53.7889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487b1e5e5e5e5e5e%3A0x5e5e5e5e5e5e5e5e!2sRibby%20Hall%20Village!5e0!3m2!1sen!2suk!4v1234567890123!5m2!1sen!2suk&q=Ribby+Hall+Village,+Wrea+Green,+Preston+PR4+2PR"
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day Guest RSVP Section -->
+    <section class="section form-section" id="day-guests">
+        <div class="geometric-pattern geometric-pattern-light"></div>
+        <div class="form-container">
+            <h2>Day Guest RSVP</h2>
+            <p>Join us for the ceremony and wedding breakfast</p>
+            <form id="dayGuestForm">
+                <div class="form-group">
+                    <label for="dayGuestName">Your Name *</label>
+                    <input type="text" id="dayGuestName" name="dayGuestName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dayGuestEmail">Email Address *</label>
+                    <input type="email" id="dayGuestEmail" name="dayGuestEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Will you be attending? *</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="dayAttendYes" name="dayAttending" value="yes" required>
+                            <label for="dayAttendYes">Yes, I'll be there!</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="dayAttendNo" name="dayAttending" value="no" required>
+                            <label for="dayAttendNo">Sorry, can't make it</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="dayMenuSection" style="display: none;">
+                    <div class="form-divider"></div>
+                    
+                    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #2c2c2c; margin: 2rem 0 1.5rem; text-align: center; font-weight: 300;">Menu Selection</h3>
+
+                    <div class="form-group">
+                        <label for="starter">Starter *</label>
+                        <select id="starter" name="starter">
+                            <option value="">-- Please Select --</option>
+                            <option value="starter1">Starter Option 1</option>
+                            <option value="starter2">Starter Option 2</option>
+                            <option value="starter3">Starter Option 3</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="main">Main Course *</label>
+                        <select id="main" name="main">
+                            <option value="">-- Please Select --</option>
+                            <option value="main1">Main Course Option 1</option>
+                            <option value="main2">Main Course Option 2</option>
+                            <option value="main3">Main Course Option 3</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dessert">Dessert *</label>
+                        <select id="dessert" name="dessert">
+                            <option value="">-- Please Select --</option>
+                            <option value="dessert1">Dessert Option 1</option>
+                            <option value="dessert2">Dessert Option 2</option>
+                            <option value="dessert3">Dessert Option 3</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dietary">Dietary Requirements</label>
+                        <input type="text" id="dietary" name="dietary" placeholder="Any allergies or dietary needs?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="allergies">Allergies</label>
+                        <input type="text" id="allergies" name="allergies" placeholder="Please list any allergies">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dayMessage">Message to the couple</label>
+                    <input type="text" id="dayMessage" name="dayMessage" placeholder="Send your well wishes!">
+                </div>
+
+                <button type="submit" class="btn">Submit RSVP</button>
+                <div class="success-message" id="daySuccess">
+                    Thank you for your RSVP!
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Night Guest RSVP Section -->
+    <section class="section rsvp-section" id="night-guests">
+        <div class="diagonal-lines"></div>
+        <div class="form-container">
+            <h2>Evening Reception RSVP</h2>
+            <p>Join us for the evening celebration!</p>
+            <form id="nightGuestForm">
+                <div class="form-group">
+                    <label for="nightGuestName">Your Name *</label>
+                    <input type="text" id="nightGuestName" name="nightGuestName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nightGuestEmail">Email Address *</label>
+                    <input type="email" id="nightGuestEmail" name="nightGuestEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Will you be attending? *</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="nightAttendYes" name="nightAttending" value="yes" required>
+                            <label for="nightAttendYes">Yes, I'll be there!</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="nightAttendNo" name="nightAttending" value="no" required>
+                            <label for="nightAttendNo">Sorry, can't make it</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nightAllergies">Allergies</label>
+                    <input type="text" id="nightAllergies" name="nightAllergies" placeholder="Please list any allergies">
+                </div>
+
+                <div class="form-group">
+                    <label for="nightMessage">Message to the couple</label>
+                    <input type="text" id="nightMessage" name="nightMessage" placeholder="Send your well wishes!">
+                </div>
+
+                <button type="submit" class="btn">Submit RSVP</button>
+                <div class="success-message" id="nightSuccess">
+                    Thank you for your RSVP!
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // =================================================================
+        // GOOGLE SHEETS INTEGRATION
+        // =================================================================
+        // Replace 'YOUR_SCRIPT_URL' below with your Google Apps Script URL
+        const GOOGLE_SCRIPT_URL = 'YOUR_SCRIPT_URL';
+
+        function submitToGoogleSheets(formData, formType) {
+            // Add form type to the data
+            const dataWithType = {
+                ...formData,
+                formType: formType,
+                timestamp: new Date().toISOString()
+            };
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dataWithType)
+            })
+            .then(() => {
+                console.log('Data sent to Google Sheets:', dataWithType);
+            })
+            .catch(error => {
+                console.error('Error sending to Google Sheets:', error);
+                // Still show success message to user
+            });
+        }
+
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuBackdrop = document.getElementById('menuBackdrop');
+        const menuLinks = document.querySelectorAll('.menu-overlay a');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            menuBackdrop.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            menuBackdrop.classList.remove('active');
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        menuBackdrop.addEventListener('click', closeMenu);
+
+        // Smooth scroll to sections and close menu
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                closeMenu();
+            });
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date('2027-03-27T00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = "<h2>The big day is here! 🎉</h2>";
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Day Guest Form - Show/Hide Menu Section
+        const dayAttendRadios = document.querySelectorAll('input[name="dayAttending"]');
+        const dayMenuSection = document.getElementById('dayMenuSection');
+        const menuSelects = ['starter', 'main', 'dessert'];
+
+        dayAttendRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'yes') {
+                    dayMenuSection.style.display = 'block';
+                    // Make menu fields required
+                    menuSelects.forEach(id => {
+                        document.getElementById(id).setAttribute('required', 'required');
+                    });
+                } else {
+                    dayMenuSection.style.display = 'none';
+                    // Remove required from menu fields
+                    menuSelects.forEach(id => {
+                        document.getElementById(id).removeAttribute('required');
+                        document.getElementById(id).value = '';
+                    });
+                    document.getElementById('dietary').value = '';
+                }
+            });
+        });
+
+        // Day Guest Form Submission
+        document.getElementById('dayGuestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const attending = document.querySelector('input[name="dayAttending"]:checked').value;
+            
+            const formData = {
+                name: document.getElementById('dayGuestName').value,
+                email: document.getElementById('dayGuestEmail').value,
+                attending: attending,
+                allergies: document.getElementById('allergies').value,
+                message: document.getElementById('dayMessage').value
+            };
+
+            // Only include menu data if attending
+            if (attending === 'yes') {
+                formData.starter = document.getElementById('starter').value;
+                formData.main = document.getElementById('main').value;
+                formData.dessert = document.getElementById('dessert').value;
+                formData.dietary = document.getElementById('dietary').value;
+            }
+
+            console.log('Day Guest RSVP:', formData);
+            
+            // Send to Google Sheets
+            submitToGoogleSheets(formData, 'Day Guest');
+            
+            // Show success message
+            document.getElementById('daySuccess').style.display = 'block';
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                this.reset();
+                dayMenuSection.style.display = 'none';
+                document.getElementById('daySuccess').style.display = 'none';
+            }, 3000);
+        });
+
+        // Night Guest Form Submission
+        document.getElementById('nightGuestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('nightGuestName').value,
+                email: document.getElementById('nightGuestEmail').value,
+                attending: document.querySelector('input[name="nightAttending"]:checked').value,
+                allergies: document.getElementById('nightAllergies').value,
+                message: document.getElementById('nightMessage').value
+            };
+
+            console.log('Night Guest RSVP:', formData);
+            
+            // Send to Google Sheets
+            submitToGoogleSheets(formData, 'Night Guest');
+            
+            // Show success message
+            document.getElementById('nightSuccess').style.display = 'block';
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                this.reset();
+                document.getElementById('nightSuccess').style.display = 'none';
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
