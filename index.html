@@ -1080,8 +1080,7 @@
             <a href="#date">Wedding Date</a>
             <a href="#countdown">Countdown</a>
             <a href="#venue">Venue</a>
-            <a href="#day-guests">Day Guest RSVP</a>
-            <a href="#night-guests">Evening RSVP</a>
+            <a href="#rsvp">RSVP</a>
         </nav>
     </div>
 
@@ -1169,41 +1168,55 @@
         </div>
     </section>
 
-    <!-- Day Guest RSVP Section -->
-    <section class="section form-section" id="day-guests">
+    <!-- Unified RSVP Section -->
+    <section class="section form-section" id="rsvp">
         <div class="geometric-pattern geometric-pattern-light"></div>
         <div class="form-container">
-            <h2>Day Guest RSVP</h2>
-            <p>Join us for the ceremony and wedding breakfast</p>
-            <form id="dayGuestForm">
+            <h2>RSVP</h2>
+            <p>We can't wait to celebrate with you</p>
+            <form id="rsvpForm">
                 <div class="form-group">
-                    <label for="dayGuestName">Your Name *</label>
-                    <input type="text" id="dayGuestName" name="dayGuestName" required>
+                    <label for="guestName">Your Name *</label>
+                    <input type="text" id="guestName" name="guestName" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="dayGuestEmail">Email Address *</label>
-                    <input type="email" id="dayGuestEmail" name="dayGuestEmail" required>
+                    <label for="guestEmail">Email Address *</label>
+                    <input type="email" id="guestEmail" name="guestEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label>I am invited to: *</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="guestTypeDay" name="guestType" value="day" required>
+                            <label for="guestTypeDay">Day Guest<br><small style="font-size: 0.8rem; opacity: 0.8;">(Ceremony & Reception)</small></label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="guestTypeNight" name="guestType" value="night" required>
+                            <label for="guestTypeNight">Evening Guest<br><small style="font-size: 0.8rem; opacity: 0.8;">(Evening Reception)</small></label>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label>Will you be attending? *</label>
                     <div class="radio-group">
                         <div class="radio-option">
-                            <input type="radio" id="dayAttendYes" name="dayAttending" value="yes" required>
-                            <label for="dayAttendYes">Yes, I'll be there!</label>
+                            <input type="radio" id="attendYes" name="attending" value="yes" required>
+                            <label for="attendYes">Yes, I'll be there!</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" id="dayAttendNo" name="dayAttending" value="no" required>
-                            <label for="dayAttendNo">Sorry, can't make it</label>
+                            <input type="radio" id="attendNo" name="attending" value="no" required>
+                            <label for="attendNo">Sorry, can't make it</label>
                         </div>
                     </div>
                 </div>
 
-                <div id="dayMenuSection" style="display: none;">
+                <div id="menuSection" style="display: none;">
                     <div class="form-divider"></div>
                     
-                    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #2c2c2c; margin: 2rem 0 1.5rem; text-align: center; font-weight: 300;">Menu Selection</h3>
+                    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #1a1a1a; margin: 2rem 0 1.5rem; text-align: center; font-weight: 300;">Menu Selection</h3>
 
                     <div class="form-group">
                         <label for="starter">Starter *</label>
@@ -1239,70 +1252,21 @@
                         <label for="dietary">Dietary Requirements</label>
                         <input type="text" id="dietary" name="dietary" placeholder="Any allergies or dietary needs?">
                     </div>
-
-                    <div class="form-group">
-                        <label for="allergies">Allergies</label>
-                        <input type="text" id="allergies" name="allergies" placeholder="Please list any allergies">
-                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="dayMessage">Message to the couple</label>
-                    <input type="text" id="dayMessage" name="dayMessage" placeholder="Send your well wishes!">
+                    <label for="allergies">Allergies</label>
+                    <input type="text" id="allergies" name="allergies" placeholder="Please list any allergies">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message to the couple</label>
+                    <input type="text" id="message" name="message" placeholder="Send your well wishes!">
                 </div>
 
                 <button type="submit" class="btn">Submit RSVP</button>
-                <div class="success-message" id="daySuccess">
-                    Thank you for your RSVP!
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <!-- Night Guest RSVP Section -->
-    <section class="section rsvp-section" id="night-guests">
-        <div class="diagonal-lines"></div>
-        <div class="form-container">
-            <h2>Evening Reception RSVP</h2>
-            <p>Join us for the evening celebration!</p>
-            <form id="nightGuestForm">
-                <div class="form-group">
-                    <label for="nightGuestName">Your Name *</label>
-                    <input type="text" id="nightGuestName" name="nightGuestName" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="nightGuestEmail">Email Address *</label>
-                    <input type="email" id="nightGuestEmail" name="nightGuestEmail" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Will you be attending? *</label>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="nightAttendYes" name="nightAttending" value="yes" required>
-                            <label for="nightAttendYes">Yes, I'll be there!</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="nightAttendNo" name="nightAttending" value="no" required>
-                            <label for="nightAttendNo">Sorry, can't make it</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="nightAllergies">Allergies</label>
-                    <input type="text" id="nightAllergies" name="nightAllergies" placeholder="Please list any allergies">
-                </div>
-
-                <div class="form-group">
-                    <label for="nightMessage">Message to the couple</label>
-                    <input type="text" id="nightMessage" name="nightMessage" placeholder="Send your well wishes!">
-                </div>
-
-                <button type="submit" class="btn">Submit RSVP</button>
-                <div class="success-message" id="nightSuccess">
-                    Thank you for your RSVP!
+                <div class="success-message" id="rsvpSuccess">
+                    Thank you! Your RSVP has been sent successfully.
                 </div>
             </form>
         </div>
@@ -1323,19 +1287,26 @@
                 timestamp: new Date().toISOString()
             };
 
+            console.log('Submitting to Google Sheets:', dataWithType);
+
+            // Create form data for submission
+            const formDataToSend = new FormData();
+            formDataToSend.append('data', JSON.stringify(dataWithType));
+
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
                 body: JSON.stringify(dataWithType)
             })
-            .then(() => {
-                console.log('Data sent to Google Sheets:', dataWithType);
+            .then(response => {
+                console.log('Response received:', response);
+                return response.text();
+            })
+            .then(data => {
+                console.log('Data sent successfully to Google Sheets:', data);
             })
             .catch(error => {
                 console.error('Error sending to Google Sheets:', error);
+                console.log('Data that failed to send:', dataWithType);
                 // Still show success message to user
             });
         }
@@ -1403,71 +1374,91 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // Day Guest Form - Show/Hide Menu Section
-        const dayAttendRadios = document.querySelectorAll('input[name="dayAttending"]');
-        const dayMenuSection = document.getElementById('dayMenuSection');
+        // Unified RSVP Form - Show/Hide Menu Section
+        const guestTypeRadios = document.querySelectorAll('input[name="guestType"]');
+        const attendingRadios = document.querySelectorAll('input[name="attending"]');
+        const menuSection = document.getElementById('menuSection');
         const menuSelects = ['starter', 'main', 'dessert'];
 
-        dayAttendRadios.forEach(radio => {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    dayMenuSection.style.display = 'block';
-                    // Make menu fields required
-                    menuSelects.forEach(id => {
-                        document.getElementById(id).setAttribute('required', 'required');
-                    });
-                } else {
-                    dayMenuSection.style.display = 'none';
-                    // Remove required from menu fields
-                    menuSelects.forEach(id => {
-                        document.getElementById(id).removeAttribute('required');
-                        document.getElementById(id).value = '';
-                    });
-                    document.getElementById('dietary').value = '';
-                }
-            });
+        function updateMenuVisibility() {
+            const guestType = document.querySelector('input[name="guestType"]:checked')?.value;
+            const attending = document.querySelector('input[name="attending"]:checked')?.value;
+            
+            // Show menu only if day guest AND attending yes
+            if (guestType === 'day' && attending === 'yes') {
+                menuSection.style.display = 'block';
+                // Make menu fields required
+                menuSelects.forEach(id => {
+                    document.getElementById(id).setAttribute('required', 'required');
+                });
+            } else {
+                menuSection.style.display = 'none';
+                // Remove required from menu fields and clear them
+                menuSelects.forEach(id => {
+                    const select = document.getElementById(id);
+                    select.removeAttribute('required');
+                    select.value = '';
+                });
+                document.getElementById('dietary').value = '';
+            }
+        }
+
+        guestTypeRadios.forEach(radio => {
+            radio.addEventListener('change', updateMenuVisibility);
         });
 
-        // Day Guest Form Submission
-        document.getElementById('dayGuestForm').addEventListener('submit', function(e) {
+        attendingRadios.forEach(radio => {
+            radio.addEventListener('change', updateMenuVisibility);
+        });
+
+        // Unified RSVP Form Submission
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const attending = document.querySelector('input[name="dayAttending"]:checked').value;
+            const guestType = document.querySelector('input[name="guestType"]:checked').value;
+            const attending = document.querySelector('input[name="attending"]:checked').value;
             
             const formData = {
-                name: document.getElementById('dayGuestName').value,
-                email: document.getElementById('dayGuestEmail').value,
+                name: document.getElementById('guestName').value,
+                email: document.getElementById('guestEmail').value,
+                guestType: guestType,
                 attending: attending,
                 allergies: document.getElementById('allergies').value,
-                message: document.getElementById('dayMessage').value
+                message: document.getElementById('message').value
             };
 
-            // Only include menu data if attending
-            if (attending === 'yes') {
+            // Only include menu data if day guest AND attending
+            if (guestType === 'day' && attending === 'yes') {
                 formData.starter = document.getElementById('starter').value;
                 formData.main = document.getElementById('main').value;
                 formData.dessert = document.getElementById('dessert').value;
                 formData.dietary = document.getElementById('dietary').value;
             }
 
-            console.log('Day Guest RSVP:', formData);
+            console.log('RSVP Submission:', formData);
+            
+            // Determine form type for Google Sheets
+            const formType = guestType === 'day' ? 'Day Guest' : 'Night Guest';
             
             // Send to Google Sheets
-            submitToGoogleSheets(formData, 'Day Guest');
+            submitToGoogleSheets(formData, formType);
             
             // Clear all form fields immediately
-            document.getElementById('dayGuestName').value = '';
-            document.getElementById('dayGuestEmail').value = '';
+            document.getElementById('guestName').value = '';
+            document.getElementById('guestEmail').value = '';
             document.getElementById('allergies').value = '';
-            document.getElementById('dayMessage').value = '';
+            document.getElementById('message').value = '';
             
             // Clear radio buttons
-            document.querySelectorAll('input[name="dayAttending"]').forEach(radio => {
+            document.querySelectorAll('input[name="guestType"]').forEach(radio => {
+                radio.checked = false;
+            });
+            document.querySelectorAll('input[name="attending"]').forEach(radio => {
                 radio.checked = false;
             });
             
             // Clear menu fields if they were shown
-            if (attending === 'yes') {
+            if (guestType === 'day' && attending === 'yes') {
                 document.getElementById('starter').value = '';
                 document.getElementById('main').value = '';
                 document.getElementById('dessert').value = '';
@@ -1475,49 +1466,10 @@
             }
             
             // Hide menu section
-            dayMenuSection.style.display = 'none';
+            menuSection.style.display = 'none';
             
             // Show success message
-            const successMsg = document.getElementById('daySuccess');
-            successMsg.textContent = '✓ Thank you! Your RSVP has been sent successfully.';
-            successMsg.style.display = 'block';
-            
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                successMsg.style.display = 'none';
-            }, 5000);
-        });
-
-        // Night Guest Form Submission
-        document.getElementById('nightGuestForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = {
-                name: document.getElementById('nightGuestName').value,
-                email: document.getElementById('nightGuestEmail').value,
-                attending: document.querySelector('input[name="nightAttending"]:checked').value,
-                allergies: document.getElementById('nightAllergies').value,
-                message: document.getElementById('nightMessage').value
-            };
-
-            console.log('Night Guest RSVP:', formData);
-            
-            // Send to Google Sheets
-            submitToGoogleSheets(formData, 'Night Guest');
-            
-            // Clear all form fields immediately
-            document.getElementById('nightGuestName').value = '';
-            document.getElementById('nightGuestEmail').value = '';
-            document.getElementById('nightAllergies').value = '';
-            document.getElementById('nightMessage').value = '';
-            
-            // Clear radio buttons
-            document.querySelectorAll('input[name="nightAttending"]').forEach(radio => {
-                radio.checked = false;
-            });
-            
-            // Show success message
-            const successMsg = document.getElementById('nightSuccess');
+            const successMsg = document.getElementById('rsvpSuccess');
             successMsg.textContent = '✓ Thank you! Your RSVP has been sent successfully.';
             successMsg.style.display = 'block';
             
