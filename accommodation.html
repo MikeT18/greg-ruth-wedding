@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accommodation - Greg & Ruth's Wedding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            padding-top: 70px;
+        }
+
+        /* Navigation Menu */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .top-nav nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+        }
+
+        .top-nav a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: white;
+            text-decoration: none;
+            padding: 20px 30px;
+            transition: all 0.3s;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 3px solid transparent;
+        }
+
+        .top-nav a:hover,
+        .top-nav a.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom-color: white;
+        }
+
+        /* Page Content */
+        .page-header {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+        }
+
+        .page-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: #ccc;
+            letter-spacing: 2px;
+        }
+
+        .content-section {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .content-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        .content-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1rem;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        .content-section p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 1.5rem;
+        }
+
+        .hotel-card {
+            background: #f8f8f8;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 4px solid #1a1a1a;
+        }
+
+        .hotel-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .hotel-card .distance {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .hotel-card p {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        .hotel-card .price {
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-top: 1rem;
+        }
+
+        .hotel-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid #1a1a1a;
+            transition: all 0.3s;
+        }
+
+        .hotel-card a:hover {
+            color: #666;
+            border-bottom-color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .top-nav a {
+                font-size: 0.75rem;
+                padding: 15px 15px;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .page-header {
+                padding: 100px 20px 60px;
+            }
+
+            .content-section {
+                margin: 40px auto;
+            }
+
+            .content-section h2 {
+                font-size: 2rem;
+            }
+
+            .content-section h3 {
+                font-size: 1.5rem;
+            }
+
+            .hotel-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="accommodation.html" class="active">Accommodation</a>
+            <a href="transport.html">Transport</a>
+        </nav>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Accommodation</h1>
+        <p>Where to stay for our special day</p>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+        <h2>Nearby Hotels</h2>
+        <p>We've compiled a list of accommodation options close to our venue at Ribby Hall Village. We recommend booking early to secure your preferred choice.</p>
+
+        <div class="hotel-card">
+            <h4>Ribby Hall Village</h4>
+            <div class="distance">0 miles from venue (On-site)</div>
+            <p><strong>Address:</strong> Ribby Hall Village, Wrea Green, PR4 2PR</p>
+            <p><strong>Phone:</strong> 01772 671111</p>
+            <p><strong>Description:</strong> Our wedding venue offers a variety of accommodation options including luxury lodges and hotel rooms. Perfect for guests who want to be right where the action is!</p>
+            <p class="price">From £120 per night</p>
+            <a href="https://www.ribbyhall.co.uk" target="_blank">Visit Website →</a>
+        </div>
+
+        <div class="hotel-card">
+            <h4>The Bluebell Hotel</h4>
+            <div class="distance">2 miles from venue</div>
+            <p><strong>Address:</strong> Kirkham Road, Wrea Green, Lancashire, PR4 2PE</p>
+            <p><strong>Phone:</strong> 01253 789000</p>
+            <p><strong>Description:</strong> A charming local hotel with comfortable rooms and a cozy atmosphere. Great breakfast included!</p>
+            <p class="price">From £85 per night</p>
+            <a href="#" target="_blank">Visit Website →</a>
+        </div>
+
+        <div class="hotel-card">
+            <h4>Premier Inn Lytham St Annes</h4>
+            <div class="distance">3.5 miles from venue</div>
+            <p><strong>Address:</strong> Boundary Road, Lytham St Annes, FY8 5DT</p>
+            <p><strong>Phone:</strong> 0333 777 4321</p>
+            <p><strong>Description:</strong> Reliable budget-friendly option with modern rooms. Good family facilities and parking available.</p>
+            <p class="price">From £65 per night</p>
+            <a href="https://www.premierinn.com" target="_blank">Visit Website →</a>
+        </div>
+
+        <div class="hotel-card">
+            <h4>The Clifton Arms Hotel</h4>
+            <div class="distance">4 miles from venue</div>
+            <p><strong>Address:</strong> West Beach, Lytham St Annes, FY8 5QJ</p>
+            <p><strong>Phone:</strong> 01253 739898</p>
+            <p><strong>Description:</strong> Beautiful seafront hotel with stunning views. Perfect if you want to explore the seaside before or after the wedding.</p>
+            <p class="price">From £95 per night</p>
+            <a href="#" target="_blank">Visit Website →</a>
+        </div>
+
+        <h3>Booking Information</h3>
+        <p>Please mention "Lawson-Dean Wedding" when booking to check if any special rates are available. We recommend booking as soon as possible, especially for rooms at Ribby Hall Village.</p>
+
+        <h3>Alternative Options</h3>
+        <p>There are also several Airbnb properties and bed & breakfasts in the surrounding villages of Wrea Green, Kirkham, and Lytham St Annes. These can be great options for groups or families looking for more space.</p>
+    </div>
+
+</body>
+</html>

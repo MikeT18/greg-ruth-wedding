@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport - Greg & Ruth's Wedding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            padding-top: 70px;
+        }
+
+        /* Navigation Menu */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .top-nav nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+        }
+
+        .top-nav a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: white;
+            text-decoration: none;
+            padding: 20px 30px;
+            transition: all 0.3s;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 3px solid transparent;
+        }
+
+        .top-nav a:hover,
+        .top-nav a.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom-color: white;
+        }
+
+        /* Page Content */
+        .page-header {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+        }
+
+        .page-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: #ccc;
+            letter-spacing: 2px;
+        }
+
+        .content-section {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .content-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        .content-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1rem;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        .content-section p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 1.5rem;
+        }
+
+        .transport-card {
+            background: #f8f8f8;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 4px solid #1a1a1a;
+        }
+
+        .transport-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .transport-card p {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        .transport-card .highlight {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        .info-box {
+            background: #fff9e6;
+            border-left: 4px solid #f0ad4e;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .info-box h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .info-box p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        ul li {
+            margin: 0.5rem 0;
+            color: #444;
+        }
+
+        @media (max-width: 768px) {
+            .top-nav a {
+                font-size: 0.75rem;
+                padding: 15px 15px;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .page-header {
+                padding: 100px 20px 60px;
+            }
+
+            .content-section {
+                margin: 40px auto;
+            }
+
+            .content-section h2 {
+                font-size: 2rem;
+            }
+
+            .content-section h3 {
+                font-size: 1.5rem;
+            }
+
+            .transport-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="accommodation.html">Accommodation</a>
+            <a href="transport.html" class="active">Transport</a>
+        </nav>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Transport</h1>
+        <p>Getting to and from the venue</p>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+        <h2>Venue Address</h2>
+        <div class="transport-card">
+            <h4>Ribby Hall Village</h4>
+            <p>Wrea Green, Preston, Lancashire</p>
+            <p>PR4 2PR</p>
+            <div class="highlight">
+                <p>📍 <a href="https://maps.google.com/?q=Ribby+Hall+Village+Wrea+Green+PR4+2PR" target="_blank" style="color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #1a1a1a;">Open in Google Maps →</a></p>
+            </div>
+        </div>
+
+        <h2>By Car</h2>
+        <p>There is ample free parking available at Ribby Hall Village. The venue is easily accessible from the M55 motorway:</p>
+        <ul>
+            <li><strong>From Manchester/South:</strong> M6 North to M55 West, Exit at Junction 3, follow signs to Kirkham then Wrea Green</li>
+            <li><strong>From Preston/North:</strong> M6 South to M55 West, Exit at Junction 3</li>
+            <li><strong>From Blackpool:</strong> Take the A583 towards Preston, turn onto B5259 to Wrea Green</li>
+        </ul>
+
+        <div class="info-box">
+            <h4>⚠️ Important: Drink Driving</h4>
+            <p>Please do not drink and drive. We want everyone to celebrate safely and get home without any risks. Consider the taxi or coach options below!</p>
+        </div>
+
+        <h2>Taxis & Private Hire</h2>
+        <p>We recommend pre-booking taxis, especially for late evening pick-ups. Here are some reliable local taxi companies:</p>
+
+        <div class="transport-card">
+            <h4>Arrow Taxis Lytham</h4>
+            <p><strong>Phone:</strong> 01253 712345</p>
+            <p><strong>Coverage:</strong> Lytham St Annes, Kirkham, Preston areas</p>
+            <p><strong>Booking:</strong> Phone or via their app</p>
+            <p>Reliable 24-hour service. Accepts card payments.</p>
+        </div>
+
+        <div class="transport-card">
+            <h4>Central Taxis Preston</h4>
+            <p><strong>Phone:</strong> 01772 555888</p>
+            <p><strong>Coverage:</strong> Preston, Kirkham, Fylde Coast</p>
+            <p><strong>Booking:</strong> Phone bookings recommended</p>
+            <p>Good for larger groups - minibuses available.</p>
+        </div>
+
+        <div class="transport-card">
+            <h4>Uber</h4>
+            <p><strong>Coverage:</strong> Available in Preston and Fylde area</p>
+            <p><strong>Booking:</strong> Via Uber app</p>
+            <p>Download the Uber app for on-demand rides. Service may be limited late at night.</p>
+        </div>
+
+        <h3>Estimated Taxi Fares</h3>
+        <ul>
+            <li>Ribby Hall Village to Lytham St Annes: £15-£20</li>
+            <li>Ribby Hall Village to Preston: £20-£25</li>
+            <li>Ribby Hall Village to Blackpool: £25-£30</li>
+        </ul>
+        <p style="font-size: 0.9rem; color: #666; font-style: italic;">Prices are approximate and may vary based on time of day and demand.</p>
+
+        <h2>By Train</h2>
+        <div class="transport-card">
+            <h4>Nearest Train Station: Kirkham & Wesham</h4>
+            <p><strong>Distance from venue:</strong> 3 miles (10 minutes by taxi)</p>
+            <p><strong>Connections:</strong> Direct trains from Preston, Blackpool, Manchester, and Liverpool</p>
+            <p>Taxis are usually available at the station, or you can pre-book one of the taxi companies listed above.</p>
+        </div>
+
+        <h2>Airport Connections</h2>
+        <div class="transport-card">
+            <h4>Manchester Airport</h4>
+            <p><strong>Distance:</strong> 45 miles (approximately 1 hour drive)</p>
+            <p>Train to Preston, then taxi to venue (~90 minutes total)</p>
+        </div>
+
+        <div class="transport-card">
+            <h4>Liverpool John Lennon Airport</h4>
+            <p><strong>Distance:</strong> 50 miles (approximately 1 hour 15 minutes drive)</p>
+            <p>Train to Preston, then taxi to venue (~2 hours total)</p>
+        </div>
+
+        <h2>Group Travel & Coaches</h2>
+        <p>If you're traveling as a group and would like to arrange a shared minibus or coach, please contact us and we can help coordinate group bookings.</p>
+
+        <div class="info-box" style="background: #e6f7ff; border-left-color: #1890ff;">
+            <h4>💡 Top Tip</h4>
+            <p>If you're staying at Ribby Hall Village, you won't need any transport - you can walk to your room! Consider booking accommodation at the venue for the most convenient option.</p>
+        </div>
+    </div>
+
+</body>
+</html>
