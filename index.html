@@ -73,7 +73,7 @@
         .section {
             padding: 80px 20px;
             position: relative;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
         .section.hero {
@@ -1181,7 +1181,6 @@
 
     <!-- Countdown Section -->
     <section class="section countdown-section" id="countdown">
-        <div class="diagonal-lines"></div>
         <div>
             <h2>Countdown to Our Big Day</h2>
             <div class="countdown" id="countdown-timer">
@@ -1397,10 +1396,10 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours;
-            document.getElementById('minutes').textContent = minutes;
-            document.getElementById('seconds').textContent = seconds;
+            document.getElementById('days').textContent = String(days).padStart(3, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
 
             if (distance < 0) {
                 document.getElementById('countdown-timer').innerHTML = "<h2>The big day is here! 🎉</h2>";
