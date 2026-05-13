@@ -257,7 +257,7 @@
                 #1a1a1a 20px,
                 #1a1a1a 21px
             );
-            animation: rotate 60s linear infinite;
+            /* animation removed — causes continuous compositing on mobile */
         }
 
         @keyframes rotate {
@@ -345,7 +345,6 @@
             font-size: 3rem;
             color: #1a1a1a;
             opacity: 0.05;
-            animation: twinkle 4s ease-in-out infinite;
         }
 
         .date-section::after {
@@ -356,7 +355,6 @@
             font-size: 3rem;
             color: #1a1a1a;
             opacity: 0.05;
-            animation: twinkle 5s ease-in-out infinite 1s;
         }
 
         .date-content {
@@ -436,7 +434,6 @@
             font-size: 2rem;
             color: #1a1a1a;
             opacity: 0.05;
-            animation: twinkle 5s ease-in-out infinite;
         }
 
         .countdown-section::after {
@@ -447,7 +444,6 @@
             font-size: 2rem;
             color: #1a1a1a;
             opacity: 0.05;
-            animation: twinkle 4s ease-in-out infinite 1s;
         }
 
         .countdown-section h2 {
@@ -466,7 +462,7 @@
             gap: 20px;
             max-width: 900px;
             margin: 0 auto;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
         }
 
         .countdown-item {
@@ -476,8 +472,7 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             border: 1px solid #e0e0e0;
-            flex: 1;
-            min-width: 0;
+            flex: 1 1 120px;
         }
 
         .countdown-value {
@@ -516,7 +511,6 @@
             font-size: 2.5rem;
             color: #1a1a1a;
             opacity: 0.04;
-            animation: twinkle 6s ease-in-out infinite;
         }
 
         .form-section::after {
@@ -527,7 +521,6 @@
             font-size: 2.5rem;
             color: #1a1a1a;
             opacity: 0.04;
-            animation: twinkle 5s ease-in-out infinite 2s;
         }
 
         .form-container {
@@ -1191,7 +1184,7 @@
         <div class="diagonal-lines"></div>
         <div>
             <h2>Countdown to Our Big Day</h2>
-            <div class="countdown" id="countdown">
+            <div class="countdown" id="countdown-timer">
                 <div class="countdown-item">
                     <span class="countdown-value" id="days">0</span>
                     <span class="countdown-label">Days</span>
@@ -1410,7 +1403,7 @@
             document.getElementById('seconds').textContent = seconds;
 
             if (distance < 0) {
-                document.getElementById('countdown').innerHTML = "<h2>The big day is here! 🎉</h2>";
+                document.getElementById('countdown-timer').innerHTML = "<h2>The big day is here! 🎉</h2>";
             }
         }
 
