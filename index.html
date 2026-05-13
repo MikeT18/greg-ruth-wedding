@@ -71,8 +71,6 @@
         }
 
         .section {
-            min-height: 100vh;
-            min-height: 100svh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -80,6 +78,11 @@
             padding: 80px 20px;
             position: relative;
             overflow-x: hidden;
+        }
+
+        .section.hero {
+            min-height: 100vh;
+            min-height: 100svh;
         }
 
         /* Decorative elements */
@@ -958,10 +961,9 @@
 
             .section {
                 padding: 60px 20px;
-                min-height: auto;
             }
 
-            .hero {
+            .section.hero {
                 min-height: 100vh;
                 min-height: 100svh;
             }
