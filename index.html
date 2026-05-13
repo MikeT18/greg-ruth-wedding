@@ -1319,15 +1319,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="dietary">Dietary Requirements</label>
-                        <input type="text" id="dietary" name="dietary" placeholder="Any allergies or dietary needs?">
-                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="allergies">Allergies</label>
-                    <input type="text" id="allergies" name="allergies" placeholder="Please list any allergies">
+                    <label for="allergies">Dietary Requirements & Allergies</label>
+                    <input type="text" id="allergies" name="allergies" placeholder="Please list any dietary requirements or allergies">
                 </div>
 
                 <div class="form-group">
@@ -1430,7 +1426,6 @@
                         r.checked = false;
                     });
                 });
-                document.getElementById('dietary').value = '';
             }
         }
 
@@ -1463,7 +1458,6 @@
                 formData.starter = document.querySelector('input[name="starter"]:checked')?.value || '';
                 formData.main = document.querySelector('input[name="main"]:checked')?.value || '';
                 formData.dessert = document.querySelector('input[name="dessert"]:checked')?.value || '';
-                formData.dietary = document.getElementById('dietary').value;
             }
 
             console.log('RSVP Submission:', formData);
@@ -1493,7 +1487,6 @@
                 ['starter', 'main', 'dessert'].forEach(name => {
                     document.querySelectorAll(`input[name="${name}"]`).forEach(r => r.checked = false);
                 });
-                document.getElementById('dietary').value = '';
             }
             
             // Hide menu section
