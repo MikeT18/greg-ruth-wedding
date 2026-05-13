@@ -664,6 +664,40 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
+        .menu-radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 0.5rem;
+        }
+
+        .menu-radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .menu-radio-option label {
+            display: block;
+            padding: 14px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            letter-spacing: 0.3px;
+            line-height: 1.6;
+        }
+
+        .menu-radio-option label:hover {
+            border-color: #aaa;
+        }
+
+        .menu-radio-option input[type="radio"]:checked + label {
+            border-color: #1a1a1a;
+            background: #1a1a1a;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
         .form-divider {
             width: 100%;
             height: 1px;
@@ -1232,33 +1266,57 @@
                     <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #1a1a1a; margin: 2rem 0 1.5rem; text-align: center; font-weight: 300;">Menu Selection</h3>
 
                     <div class="form-group">
-                        <label for="starter">Starter *</label>
-                        <select id="starter" name="starter">
-                            <option value="">-- Please Select --</option>
-                            <option value="starter1">Starter Option 1</option>
-                            <option value="starter2">Starter Option 2</option>
-                            <option value="starter3">Starter Option 3</option>
-                        </select>
+                        <label>Starter *</label>
+                        <div class="menu-radio-group">
+                            <div class="menu-radio-option">
+                                <input type="radio" id="starter1" name="starter" value="Roasted Parsnip, Cauliflower and Pancetta Soup, Mrs Kirkhams Cheese Croute">
+                                <label for="starter1"><strong>Roasted Parsnip, Cauliflower and Pancetta Soup</strong>, Mrs Kirkhams Cheese Croute</label>
+                            </div>
+                            <div class="menu-radio-option">
+                                <input type="radio" id="starter2" name="starter" value="Beetroot and Lytham Gin Cured Salmon, Yuzu, Mizuna Leaf Salad">
+                                <label for="starter2"><strong>Beetroot and Lytham Gin Cured Salmon</strong>, Yuzu, Mizuna Leaf Salad</label>
+                            </div>
+                            <div class="menu-radio-option">
+                                <input type="radio" id="starter3" name="starter" value="Macaroni Cheese Croquettes, Ranch Dressing, House Salad (V)">
+                                <label for="starter3"><strong>Macaroni Cheese Croquettes</strong>, Ranch Dressing, House Salad (V)</label>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="main">Main Course *</label>
-                        <select id="main" name="main">
-                            <option value="">-- Please Select --</option>
-                            <option value="main1">Main Course Option 1</option>
-                            <option value="main2">Main Course Option 2</option>
-                            <option value="main3">Main Course Option 3</option>
-                        </select>
+                        <label>Main Course *</label>
+                        <div class="menu-radio-group">
+                            <div class="menu-radio-option">
+                                <input type="radio" id="main1" name="main" value="Roasted Chicken Breast, Chestnut Mushroom Fricassee, Garlic and Thyme Fondant, Asparagus, Tenderstem Broccoli">
+                                <label for="main1"><strong>Roasted Chicken Breast, Chestnut Mushroom Fricassee</strong>, Garlic and Thyme Fondant, Asparagus, Tenderstem Broccoli</label>
+                            </div>
+                            <div class="menu-radio-option">
+                                <input type="radio" id="main2" name="main" value="Pork Shoulder Confit, Pimentón Beans, Herb Crust, Patatas Bravas, Garlic Green Beans, Picante Sauce">
+                                <label for="main2"><strong>Pork Shoulder Confit, Pimentón Beans, Herb Crust</strong>, Patatas Bravas, Garlic Green Beans, Picante Sauce</label>
+                            </div>
+                            <div class="menu-radio-option">
+                                <input type="radio" id="main3" name="main" value="Wild Mushroom Tortelloni Alfredo, Spaghetti Courgette, Girolles, Butternut Squash, Parmesan (V)">
+                                <label for="main3"><strong>Wild Mushroom Tortelloni Alfredo</strong>, Spaghetti Courgette, Girolles, Butternut Squash, Parmesan (V)</label>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="dessert">Dessert *</label>
-                        <select id="dessert" name="dessert">
-                            <option value="">-- Please Select --</option>
-                            <option value="dessert1">Dessert Option 1</option>
-                            <option value="dessert2">Dessert Option 2</option>
-                            <option value="dessert3">Dessert Option 3</option>
-                        </select>
+                        <label>Dessert *</label>
+                        <div class="menu-radio-group">
+                            <div class="menu-radio-option">
+                                <input type="radio" id="dessert1" name="dessert" value="Triple Chocolate Brownie, Salted Caramel Ice Cream, Chocolate Sauce">
+                                <label for="dessert1"><strong>Triple Chocolate Brownie</strong>, Salted Caramel Ice Cream, Chocolate Sauce</label>
+                            </div>
+                            <div class="menu-radio-option">
+                                <input type="radio" id="dessert2" name="dessert" value="Vanilla Crème Brulee, Maple Viennese Biscuits">
+                                <label for="dessert2"><strong>Vanilla Crème Brulee</strong>, Maple Viennese Biscuits</label>
+                            </div>
+                            <div class="menu-radio-option">
+                                <input type="radio" id="dessert3" name="dessert" value="Sticky Toffee Pudding, Vanilla Bean Ice Cream, Brandy Snap, Butterscotch Sauce">
+                                <label for="dessert3"><strong>Sticky Toffee Pudding</strong>, Vanilla Bean Ice Cream, Brandy Snap, Butterscotch Sauce</label>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -1352,26 +1410,25 @@
         const guestTypeRadios = document.querySelectorAll('input[name="guestType"]');
         const attendingRadios = document.querySelectorAll('input[name="attending"]');
         const menuSection = document.getElementById('menuSection');
-        const menuSelects = ['starter', 'main', 'dessert'];
+        const menuGroups = ['starter', 'main', 'dessert'];
 
         function updateMenuVisibility() {
             const guestType = document.querySelector('input[name="guestType"]:checked')?.value;
             const attending = document.querySelector('input[name="attending"]:checked')?.value;
-            
+
             // Show menu only if day guest AND attending yes
             if (guestType === 'day' && attending === 'yes') {
                 menuSection.style.display = 'block';
-                // Make menu fields required
-                menuSelects.forEach(id => {
-                    document.getElementById(id).setAttribute('required', 'required');
+                menuGroups.forEach(name => {
+                    document.querySelectorAll(`input[name="${name}"]`).forEach(r => r.setAttribute('required', 'required'));
                 });
             } else {
                 menuSection.style.display = 'none';
-                // Remove required from menu fields and clear them
-                menuSelects.forEach(id => {
-                    const select = document.getElementById(id);
-                    select.removeAttribute('required');
-                    select.value = '';
+                menuGroups.forEach(name => {
+                    document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+                        r.removeAttribute('required');
+                        r.checked = false;
+                    });
                 });
                 document.getElementById('dietary').value = '';
             }
@@ -1403,9 +1460,9 @@
 
             // Only include menu data if day guest AND attending
             if (guestType === 'day' && attending === 'yes') {
-                formData.starter = document.getElementById('starter').value;
-                formData.main = document.getElementById('main').value;
-                formData.dessert = document.getElementById('dessert').value;
+                formData.starter = document.querySelector('input[name="starter"]:checked')?.value || '';
+                formData.main = document.querySelector('input[name="main"]:checked')?.value || '';
+                formData.dessert = document.querySelector('input[name="dessert"]:checked')?.value || '';
                 formData.dietary = document.getElementById('dietary').value;
             }
 
@@ -1433,9 +1490,9 @@
             
             // Clear menu fields if they were shown
             if (guestType === 'day' && attending === 'yes') {
-                document.getElementById('starter').value = '';
-                document.getElementById('main').value = '';
-                document.getElementById('dessert').value = '';
+                ['starter', 'main', 'dessert'].forEach(name => {
+                    document.querySelectorAll(`input[name="${name}"]`).forEach(r => r.checked = false);
+                });
                 document.getElementById('dietary').value = '';
             }
             
